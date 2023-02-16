@@ -5,8 +5,8 @@ import data from './data/ghibli/ghibli.js';
 
 console.log(example, data);
 
-const botaoInicio = document.getElementbyId("botao-inicio");
+const botaoInicio = document.querySelector("#botao-inicio");
 
-botaoInicio.addEventListener(click, function(){
+botaoInicio.addEventListener("click", function(){
     location.href = "index2.html";
 })
