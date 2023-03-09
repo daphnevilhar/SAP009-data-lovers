@@ -1,23 +1,23 @@
-import { example, anotherExample } from '../src/data.js';
+import { filtrarDiretor , filtrarPersonagens } from '../src/data.js';
 
 
-describe('example', () => {
+describe('filtra por diretor', () => {
   it('is a function', () => {
-    expect(typeof example).toBe('function');
+    expect(typeof filtrarDiretor).toBe('function');
   });
 
-  it('returns `example`', () => {
-    expect(example()).toBe('example');
+  it('returns `filtrarDiretor`', () => {
+    expect(filtrarDiretor('Hayao Miyazaki')).toEqual('Castle in the Sky');
   });
 });
 
 
-describe('anotherExample', () => {
+describe('filtrar por personagens', () => {
   it('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
+    expect(typeof filtrarPersonagens).toBe('function');
   });
 
-  it('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
+  it('returns `filtrarDiretor`', () => {
+    expect(filtrarPersonagens('')).toBe('OMG');
   });
 });

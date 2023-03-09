@@ -13,32 +13,50 @@
     <h1 class="cabeçalho__titulo">STUDIO GHIBLI</h1>
     <a class="cabeçalho__links" href="https://www.garotasgeeks.com/10-curiosidades-fascinantes-sobre-o-studio-ghibli/" target="_blank">Curiosidades</a>
     <a class="cabeçalho__links" href=" https://pt.wikipedia.org/wiki/Studio_Ghibli"  target="_blank">Fundação</a>
-
+    
     
   </header>
 
   <main>
     <section class="busca">
-    
-      <h1>Conheça o mundo do Studio Ghibli!</h1>
-
-      <select name="categoria">
-      <option value="Veja" selected hidden>Veja</option>
-      <option value="Diretores">Diretores</option>
-      <option value="Produtores">Produtores</option>
-      <option value="Filmes">Filmes</option>
+      
+      <!--<button class="btn btn-films">Filmes</button>
+      <button class="btn btn-people">Personagens</button>
+      <button class="btn btn-locations">Lugares</button>
+      <button class="btn btn-vehicles">Veículos</button>-->
+      
+      <select id="sort-select">
+        <option value="ordenar" selected hidden>Ordenar</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+      
+      <select id="filter-select">
+        <option value="filtrar" selected hidden>Filtrar por diretor</option>
+        <option value="Hayao-Miyazaki">Hayao Miyazaki</option>
+        <option value="Goro-Miyazaki">Gorō Miyazaki</option>
+        <option value="Isao Takahata">Isao Takahata</option>
       </select>
 
-      <button id="buscar">Ok</button>
     </section>
     <section class="cards">
-        <!--<di<div class="card">
+        <!--<div class="card">
         <image class="card__image" src="https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg">
         <h3 class="card__title">Castle in the Sky</h3>
-        -->
-      </div>
-      
+        </div>-->
     </section>
+    <div id="fade" class="hide"></div>
+    <div id="modal"class="hide">
+      <div class="modal-header">
+        <h2>Este é o modal</h2>
+        <button id="close-modal">Fechar</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    
   </main>
 
   <footer> 
