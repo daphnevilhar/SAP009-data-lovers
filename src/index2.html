@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Lovers</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,8 +12,8 @@
 
   <header class="cabeçalho">
     <h1 class="cabeçalho__titulo">STUDIO GHIBLI</h1>
-    <a class="cabeçalho__links" href="https://www.garotasgeeks.com/10-curiosidades-fascinantes-sobre-o-studio-ghibli/" target="_blank">Curiosidades</a>
-    <a class="cabeçalho__links" href=" https://pt.wikipedia.org/wiki/Studio_Ghibli"  target="_blank">Fundação</a>
+    <a class="cabeçalho__links" href="https://www.garotasgeeks.com/10-curiosidades-fascinantes-sobre-o-studio-ghibli/" target="_blank">CURIOSIDADES</a>
+    <a class="cabeçalho__links" href=" https://pt.wikipedia.org/wiki/Studio_Ghibli"  target="_blank">FUNDAÇÃO</a>
     
     
   </header>
@@ -20,25 +21,22 @@
   <main>
     <section class="busca">
       
-      <!--<button class="btn btn-films">Filmes</button>
-      <button class="btn btn-people">Personagens</button>
-      <button class="btn btn-locations">Lugares</button>
-      <button class="btn btn-vehicles">Veículos</button>-->
+      <select id="filter-select" class="select">
+        <option value="filtrar" selected hidden>Filtrar por diretor</option>
+        <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+        <option value="Gorō Miyazaki">Gorō Miyazaki</option>
+        <option value="Isao Takahata">Isao Takahata</option>
+        <option value="Yoshifumi Kondō">Yoshifumi Kondō</option>
+        <option value="Hiroyuki Morita">Hiroyuki Morita</option>
+        <option value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+      </select>
       
-      <select id="sort-select">
+      <select id="sort-select" class="select">
         <option value="ordenar" selected hidden>Ordenar</option>
         <option value="a-z">A-Z</option>
         <option value="z-a">Z-A</option>
-        <option value=""></option>
-        <option value=""></option>
       </select>
-      
-      <select id="filter-select">
-        <option value="filtrar" selected hidden>Filtrar por diretor</option>
-        <option value="Hayao-Miyazaki">Hayao Miyazaki</option>
-        <option value="Goro-Miyazaki">Gorō Miyazaki</option>
-        <option value="Isao Takahata">Isao Takahata</option>
-      </select>
+      <h2 class="calculo"></h2>
 
     </section>
     <section class="cards">
@@ -47,7 +45,7 @@
         <h3 class="card__title">Castle in the Sky</h3>
         </div>-->
     </section>
-    <div id="fade" class="hide"></div>
+    <!--<div id="fade" class="hide"></div>
     <div id="modal"class="hide">
       <div class="modal-header">
         <h2>Este é o modal</h2>
@@ -55,7 +53,7 @@
       </div>
       <div class="modal-body">
       </div>
-    </div>
+    </div>-->
     
   </main>
 

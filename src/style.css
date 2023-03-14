@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@100;300&display=swap');
+
 
 :root {
     --cor-primaria: #6D6A63;
@@ -14,11 +15,9 @@
 
 html, body {
     background: var(--cor-secundaria);
-    font-size: 1rem;
     box-sizing: border-box;
     width: 100%;
-    text-align:left;
-    font-family: 'Montserrat', sans-serif;
+
 }
 
 .apresentacao {
@@ -45,7 +44,7 @@ html, body {
     font-family: var(--fonte-primaria);
     font-size: 1.5rem;
     text-align: justify;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 #botao-inicio {
@@ -72,38 +71,75 @@ html, body {
     font-weight: 300;
     text-align: center;
     font-size: 1.25rem;
-    padding: 10px;
     color: var(--cor-secundaria);
     text-shadow: 4px 6px 10px #000000;
     background: var(--cor-primaria);
 }
 
 .cabeçalho__links{
+    margin: 0 1% 0 1%;
     color: var(--cor-secundaria);
     text-decoration: none;
+    font-weight: 200;
 }
 
 .busca {
-    background-color: var(--cor-primaria);
-    margin: 1% 20% 1% 20%;
+    margin: 1%;
     text-align: center;
-    
+    margin-bottom: 5%;
+}
+
+.buttonlink {
+    background-color: var(--cor-secundaria);
+    text-decoration: none;
+    width: 280px;
+    color: #000000;
+    border-radius: 3px;
+    font-family: var(--fonte-primaria);
+    font-weight: 300;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #717171;
+    padding: 1px;
+}
+
+.select {
+    position: relative;
+    border-radius: 3px;
+    font-family: var(--fonte-primaria);
+    font-weight: 300;
+    background-color: var(--cor-secundaria);
+    border-color: #717171;
+  }
+
+.calculo{
+    margin: 1%;
+    font-family: var(--fonte-primaria);
+    font-size: 1rem;
+}
+
+.calculo-personagens{
+    margin: 1%;
+    font-family: var(--fonte-primaria);
+    font-size: 1rem;
 }
 
 .cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    margin: 1rem;
 }
 
 .card {
-    width: 15%;
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    margin: 3rem;
-    font-family:'Montserrat', sans-serif;
+    align-items: center;
+    font-family: var(--fonte-primaria);
+    font-weight: 300;
     font-size: 0.5rem;
 }
 
@@ -112,6 +148,7 @@ html, body {
     width: 200px;
     height: 280px;
     object-fit: cover;
+    margin: 1rem;
 }
 
 .card__title {
@@ -119,7 +156,12 @@ html, body {
     font-size: 1rem;
 }
 
+.card__third-information-personagem{
+    margin-bottom: 1rem;
+}
+
 .botao {
+    margin: 1rem;
     background-color: var(--cor-primaria); 
     border: none;
     border-radius: 6px;
@@ -184,13 +226,25 @@ html, body {
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .apresentacao {
         flex-direction: column-reverse;
     }
+
     .apresentacao__conteudo {
         width: auto;
         align-items: center;
     }
 
+    .cabeçalho__links{
+        font-size: 1.25rem;
+    }
+
+    .busca {
+        margin: 2%;
+    }
+
+    .select {
+        font-size: 1rem;
+      }
 }

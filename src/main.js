@@ -1,64 +1,65 @@
-import { filtrarDiretor , filtrarPersonagens , filmesOrdenadosAZ, filmesOrdenadosZA} from './data.js';
+import { filtrarDiretor , filtrarPersonagens , filmesOrdenadosAZ, filmesOrdenadosZA, calculo} from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/ghibli/ghibli.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
-export const filmes = data.films;
+export const dados = data.films;
 
 const mostrarCard = document.querySelector(".cards");
 const mostrarBusca = document.querySelector(".busca");
+const mostrarCalculo = document.querySelector(".calculo");
 
 function mostrarFilmes(listaDeFilmes){
   mostrarCard.innerHTML = ""
   listaDeFilmes.forEach(film => {
     mostrarCard.innerHTML += `
-    <div id="${film.id}" class="card">
-    <image class="card__image" src="${film.poster}">
-    <h3 class="card__title">${film.title}</h3>
-    <h2 class="card__fist-information">Diretor: ${film.director}</h2>
-    <h2 class="card__second-information">Ano: ${film.release_date}</h2>
-    <button class="botao card__personagens" id="${film.title}">Personagens</button>
+    <div class="card">
+      <image class="card__image" src="${film.poster}">
+      <h3 class="card__title">${film.title}</h3>
+      <h2 class="card__fist-information">Diretor: ${film.director}</h2>
+      <h2 class="card__second-information">Ano: ${film.release_date}</h2>
+      <button class="botao card__personagens" id="${film.title}">Personagens</button>
     </div>
     `
   });
 }
 
-mostrarFilmes(filmes);
+mostrarFilmes(dados);
 
 function mostrarPersonagens(event){
   const filme = filtrarPersonagens(event.target.id)
   mostrarBusca.innerHTML = `
   <a class="buttonlink" type="button" href="index2.html">Voltar</a>
-  <select id="sort-select">
+  <select id="sort-select-personagens" class="select">
     <option value="ordenar" selected hidden>Ordenar</option>
     <option value="a-z">A-Z</option>
     <option value="z-a">Z-A</option>
-    <option value=""></option>
-    <option value=""></option>
   </select>
 
-  <select name="filter-select">
+  <select name="filter-select-personagens" class="select">
     <option value="filtrar" selected hidden>Filtrar</option>
     <option value="Male">Masculino</option>
     <option value="Female">Feminino</option>
     <option value="Unknown">Desconhecido</option>
-  </select>`
+  </select>
+  <h2 class="calculo-personagens"></h2>`
+  const mostrarCalculoPersonagens = document.querySelector(".calculo-personagens")
   mostrarCard.innerHTML = ""
+  mostrarCalculoPersonagens.innerHTML = ""
+  mostrarCalculoPersonagens.innerHTML += `Este filme tem ${filme[0].people.length} personagens`
   filme[0].people.forEach(filme => {
     mostrarCard.innerHTML += `
       <div class="card">
       <image class="card__image" src="${filme.img}">
       <h3 class="card__title">${filme.name}</h3>
-      <h3 class="card__first-information">Idade : ${filme.age}</h3>
-      <h3 class="card__second-information">Gênero : ${filme.gender}</h3>
-      <h3 class="card__third-information">Espécie : ${filme.specie}</h3>
+      <h2 class="card__first-information">Idade : ${filme.age}</h2>
+      <h2 class="card__second-information">Gênero : ${filme.gender}</h2>
+      <h2 class="card__third-information-personagem">Espécie : ${filme.specie}</h2>
       </div>`
+    
   })
 }
 
-
-
-const btnPeople = document.querySelector(".card__personagens");
 const listaDeBtnPersonagens = document.querySelectorAll(".card__personagens");
 
 let contador = 0
@@ -150,9 +151,10 @@ function innerModal(event){
 innerModal();
 */
 
-
 const seletorFiltroDiretor = document.querySelector("#filter-select");
 const seletorOrdenacao = document.querySelector("#sort-select");
+//const seletorFiltroGenero = document.querySelector("#filter-select-personagens");
+//const seletorOrdenacaoPersonagens = document.querySelector("#sort-select-personagens");
 
 // function ordenarAZ(){
 //   const filmesOrdenados = filmes.sort((a, b) => {
@@ -170,11 +172,11 @@ function selecionarOrdem(){
   const optionValue = seletorOrdenacao.options[seletorOrdenacao.selectedIndex];
   const value = optionValue.value;
   if (value === "a-z"){
-    const ordenarAZ = filmesOrdenadosAZ
+    const ordenarAZ = filmesOrdenadosAZ(dados)
     mostrarFilmes(ordenarAZ)
   }
   if (value === "z-a"){
-    const ordenarZA = filmesOrdenadosZA
+    const ordenarZA = filmesOrdenadosZA(dados)
     mostrarFilmes(ordenarZA)
   }
 }
@@ -182,22 +184,27 @@ function selecionarOrdem(){
 seletorOrdenacao.addEventListener("change", selecionarOrdem);
 
 function selecionarFiltro(){
+  mostrarCalculo.innerHTML = ""
   const optionValue = seletorFiltroDiretor.options[seletorFiltroDiretor.selectedIndex];
   const value = optionValue.value;
-  if (value === "Hayao-Miyazaki"){
-    const filmesHayao = filtrarDiretor("Hayao Miyazaki")
-    mostrarFilmes(filmesHayao);
-  }
-  if (value === "Goro-Miyazaki"){
-    const filmesGoro = filtrarDiretor("Gorō Miyazaki")
-    mostrarFilmes(filmesGoro);
-  }
-  if (value === "Isao Takahata"){
-    const filmesIsao = filtrarDiretor("Isao Takahata")
-    mostrarFilmes(filmesIsao);
-  }
-
+  const filmes = filtrarDiretor(value)
+  mostrarFilmes(filmes);
+  mostrarCalculo.innerHTML += ` Esse diretor dirigiu ${calculo(filmes, dados)}% dos filmes do estúdio.`;
 }
 
 seletorFiltroDiretor.addEventListener("change", selecionarFiltro);
 
+// function selecionarOrdemPersonagens(){
+//   const optionValue = seletorOrdenacaoPersonagens.options[seletorOrdenacaoPersonagens.selectedIndex];
+//   const value = optionValue.value;
+//   if (value === "a-z"){
+//     const ordenarAZ = filmesOrdenadosAZ(mostrarPersonagens())
+//     mostrarPersonagens(ordenarAZ)
+//   }
+//   if (value === "z-a"){
+//     const ordenarZA = filmesOrdenadosZA(filmes)
+//     mostrarFilmes(ordenarZA)
+//   }
+// }
+
+// seletorOrdenacaoPersonagens.addEventListener("change", selecionarOrdemPersonagens);
