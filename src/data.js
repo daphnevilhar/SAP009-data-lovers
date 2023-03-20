@@ -1,10 +1,8 @@
-import { dados } from "./main.js";
-
-export const filtrarDiretor = (nomeDoDiretor) => {
+export const filtrarDiretor = (dados, nomeDoDiretor) => {
   return dados.filter(films => films.director === nomeDoDiretor);
 };
 
-export const filtrarPersonagens = (nomeDoFilme) => {
+export const filtrarPersonagens = (dados, nomeDoFilme) => {
   return dados.filter(films => films.title === nomeDoFilme);
 };
 
@@ -19,4 +17,4 @@ export const filmesOrdenadosZA = (filmes) => {
 export const calculo = (filmesPorDiretor, totalDeFilmes) => {
   const resultado = (filmesPorDiretor.length/totalDeFilmes.length)*100
   return resultado;
-}
+};

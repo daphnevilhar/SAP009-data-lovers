@@ -3,7 +3,7 @@ import { filtrarDiretor , filtrarPersonagens , filmesOrdenadosAZ, filmesOrdenado
 import data from './data/ghibli/ghibli.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
-export const dados = data.films;
+const dados = data.films;
 
 const mostrarCard = document.querySelector(".cards");
 const mostrarBusca = document.querySelector(".busca");
@@ -27,7 +27,7 @@ function mostrarFilmes(listaDeFilmes){
 mostrarFilmes(dados);
 
 function mostrarPersonagens(event){
-  const filme = filtrarPersonagens(event.target.id)
+  const filme = filtrarPersonagens(dados, event.target.id)
   mostrarBusca.innerHTML = `
   <a class="buttonlink" type="button" href="index2.html">Voltar</a>
   <select id="sort-select-personagens" class="select">
@@ -62,57 +62,14 @@ function mostrarPersonagens(event){
 
 const listaDeBtnPersonagens = document.querySelectorAll(".card__personagens");
 
-let contador = 0
-
-while (contador < listaDeBtnPersonagens.length) {
-  listaDeBtnPersonagens[contador].onclick = mostrarPersonagens;
-  contador += 1
-}
-
-
-//btnPeople.addEventListener("click", showPeople);
-
-//quando clicar em personagens
-//o html ficar vazio 
-//aparecer todos os personagens do filme na tela 
-
-//const btnLocations = document.querySelector(".btn-locations");
-
-/*function showLocations(){
-  mostrarCard.innerHTML = "";
-  for (let i=0; i < data.films.length ; i++) {
-    for (let j = 0; j < data.films[i].locations.length; j++) {
-      mostrarCard.innerHTML += `
-    <div class="card">
-    <image class="card__image" src="${data.films[i].locations[j].img}">
-    <h3 class="card__title">${data.films[i].locations[j].name}</h3>
-    </div>
-    `
-    }
+function botaoDosPersonagens(){
+  for(let contador = 0 ; contador < listaDeBtnPersonagens.length ; contador++){
+    listaDeBtnPersonagens[contador].addEventListener("click", mostrarPersonagens);
   }
 }
 
-btnLocations.addEventListener("click", showLocations);
-
-
-const btnVehicles = document.querySelector(".btn-vehicles");
-
-function showVehicles(){
-  mostrarCard.innerHTML = "";
-  for (let i=0; i < data.films.length ; i++) {
-    for (let j = 0; j < data.films[i].vehicles.length; j++){
-      mostrarCard.innerHTML += `
-    <div class="card">
-    <image class="card__image" src="${data.films[i].vehicles[j].img}">
-    <h3 class="card__title">${data.films[i].vehicles[j].name}</h3>
-    </div>
-    `
-    }
-  }
-}
-
-btnVehicles.addEventListener("click", showVehicles);
-
+botaoDosPersonagens();
+/*
 
 const openModal = document.querySelectorAll(".card");
 const closeModalButton = document.querySelector("#close-modal");
@@ -153,20 +110,6 @@ innerModal();
 
 const seletorFiltroDiretor = document.querySelector("#filter-select");
 const seletorOrdenacao = document.querySelector("#sort-select");
-//const seletorFiltroGenero = document.querySelector("#filter-select-personagens");
-//const seletorOrdenacaoPersonagens = document.querySelector("#sort-select-personagens");
-
-// function ordenarAZ(){
-//   const filmesOrdenados = filmes.sort((a, b) => {
-//     return a.title.localeCompare(b.title)})
-//   mostrarFilmes(filmesOrdenados)
-// }
-
-// function ordenarZA(){
-//   const filmesOrdenados = filmes.sort((a, b) => {
-//     return b.title.localeCompare(a.title)})
-//   mostrarFilmes(filmesOrdenados)
-// }
 
 function selecionarOrdem(){
   const optionValue = seletorOrdenacao.options[seletorOrdenacao.selectedIndex];
@@ -187,7 +130,7 @@ function selecionarFiltro(){
   mostrarCalculo.innerHTML = ""
   const optionValue = seletorFiltroDiretor.options[seletorFiltroDiretor.selectedIndex];
   const value = optionValue.value;
-  const filmes = filtrarDiretor(value)
+  const filmes = filtrarDiretor(dados, value)
   mostrarFilmes(filmes);
   mostrarCalculo.innerHTML += ` Esse diretor dirigiu ${calculo(filmes, dados)}% dos filmes do estúdio.`;
 }
