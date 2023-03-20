@@ -151,3 +151,5 @@ seletorFiltroDiretor.addEventListener("change", selecionarFiltro);
 // }
 
 // seletorOrdenacaoPersonagens.addEventListener("change", selecionarOrdemPersonagens);
+
+//oi
