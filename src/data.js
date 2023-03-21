@@ -14,7 +14,7 @@ export const filmesOrdenadosZA = (filmes) => {
   return filmes.sort((a, b) => b.title.localeCompare(a.title))
 };
 
-export const calculo = (filmesPorDiretor, totalDeFilmes) => {
-  const resultado = (filmesPorDiretor.length/totalDeFilmes.length)*100
-  return resultado;
+export const calculo = (percentual, total) => {
+  const resultado = (percentual/total)*100
+  return resultado.toFixed(2);
 };

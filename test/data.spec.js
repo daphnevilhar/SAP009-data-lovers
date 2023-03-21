@@ -68,7 +68,7 @@ describe('filtrar por personagens', () => {
   });
 
   it('returns `filtrarPersonagens`', () => {
-    expect(filtrarPersonagens(teste, 'Castle in the Sky')).toBe([castleInTheSky.people.name, castleInTheSky.people.name, castleInTheSky.people.name]);
+    expect(filtrarPersonagens(teste, 'Castle in the Sky')).toEqual([castleInTheSky]);
   });
 });
 
@@ -98,8 +98,8 @@ describe('calcula', () => {
     expect(typeof calculo).toBe('function');
   });
 
-  it('returns `calculo`', () => {
-    const diretoresFiltrados = [wisperOfTheHeart]
-    expect(calculo(diretoresFiltrados, teste)).toEqual('33.33');
+  it('Should return a calculation based on two numbers', () => {
+    expect(calculo(5, 10)).toEqual('50.00');
+    expect(calculo(2, 10)).toEqual('20.00');
   });
 });

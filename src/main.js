@@ -30,18 +30,6 @@ function mostrarPersonagens(event){
   const filme = filtrarPersonagens(dados, event.target.id)
   mostrarBusca.innerHTML = `
   <a class="buttonlink" type="button" href="index2.html">Voltar</a>
-  <select id="sort-select-personagens" class="select">
-    <option value="ordenar" selected hidden>Ordenar</option>
-    <option value="a-z">A-Z</option>
-    <option value="z-a">Z-A</option>
-  </select>
-
-  <select name="filter-select-personagens" class="select">
-    <option value="filtrar" selected hidden>Filtrar</option>
-    <option value="Male">Masculino</option>
-    <option value="Female">Feminino</option>
-    <option value="Unknown">Desconhecido</option>
-  </select>
   <h2 class="calculo-personagens"></h2>`
   const mostrarCalculoPersonagens = document.querySelector(".calculo-personagens")
   mostrarCard.innerHTML = ""
@@ -69,58 +57,30 @@ function botaoDosPersonagens(){
 }
 
 botaoDosPersonagens();
-/*
-
-const openModal = document.querySelectorAll(".card");
-const closeModalButton = document.querySelector("#close-modal");
-const modal = document.querySelector("#modal");
-const fade = document.querySelector("#fade");
-
-const toggleModal = () => {
-  [modal, fade].forEach((el) => el.classList.toggle("hide"));
-};
-
-openModal.forEach((el) => {
-  el.addEventListener("click", () => {
-    modal.classList.remove("hide");
-    fade.classList.remove("hide");
-  });
-});
-
-[modal, fade].forEach((el) => {
-  el.addEventListener("click", () => toggleModal());
-});
-
-const showModal = document.querySelector(".modal-body");
-
-function innerModal(event){
-  const idFilme = mostrarFilmes(event.target.id)
-  showModal.innerHTML = ""
-  idFilme.forEach(filme => {
-    showModal.innerHTML += `
-    <div class="modal-body">
-    <p class="modal__description">Sobre: ${filme.description}</p>
-    </div>
-    `
-  });
-}
-
-innerModal();
-*/
 
 const seletorFiltroDiretor = document.querySelector("#filter-select");
 const seletorOrdenacao = document.querySelector("#sort-select");
 
 function selecionarOrdem(){
+  mostrarCalculo.innerHTML = ""
+  seletorFiltroDiretor.value = "filtrar"
   const optionValue = seletorOrdenacao.options[seletorOrdenacao.selectedIndex];
   const value = optionValue.value;
   if (value === "a-z"){
     const ordenarAZ = filmesOrdenadosAZ(dados)
     mostrarFilmes(ordenarAZ)
+    const listaDeBtnPersonagensFiltrados = document.querySelectorAll(".card__personagens");
+    for(let contador = 0 ; contador < listaDeBtnPersonagensFiltrados.length ; contador++){
+      listaDeBtnPersonagensFiltrados[contador].addEventListener("click", mostrarPersonagens);
+    }
   }
   if (value === "z-a"){
     const ordenarZA = filmesOrdenadosZA(dados)
-    mostrarFilmes(ordenarZA)
+    mostrarFilmes(ordenarZA);
+    const listaDeBtnPersonagensFiltrados = document.querySelectorAll(".card__personagens");
+    for(let contador = 0 ; contador < listaDeBtnPersonagensFiltrados.length ; contador++){
+      listaDeBtnPersonagensFiltrados[contador].addEventListener("click", mostrarPersonagens);
+    }
   }
 }
 
@@ -128,28 +88,16 @@ seletorOrdenacao.addEventListener("change", selecionarOrdem);
 
 function selecionarFiltro(){
   mostrarCalculo.innerHTML = ""
+  seletorOrdenacao.value = "ordenar"
   const optionValue = seletorFiltroDiretor.options[seletorFiltroDiretor.selectedIndex];
   const value = optionValue.value;
   const filmes = filtrarDiretor(dados, value)
   mostrarFilmes(filmes);
-  mostrarCalculo.innerHTML += ` Esse diretor dirigiu ${calculo(filmes, dados)}% dos filmes do estúdio.`;
+  mostrarCalculo.innerHTML += ` Esse diretor dirigiu ${calculo(filmes.length, dados.length)}% dos filmes do estúdio.`;
+  const listaDeBtnPersonagensFiltrados = document.querySelectorAll(".card__personagens");
+  for(let contador = 0 ; contador < listaDeBtnPersonagensFiltrados.length ; contador++){
+    listaDeBtnPersonagensFiltrados[contador].addEventListener("click", mostrarPersonagens);
+  }
 }
 
 seletorFiltroDiretor.addEventListener("change", selecionarFiltro);
-
-// function selecionarOrdemPersonagens(){
-//   const optionValue = seletorOrdenacaoPersonagens.options[seletorOrdenacaoPersonagens.selectedIndex];
-//   const value = optionValue.value;
-//   if (value === "a-z"){
-//     const ordenarAZ = filmesOrdenadosAZ(mostrarPersonagens())
-//     mostrarPersonagens(ordenarAZ)
-//   }
-//   if (value === "z-a"){
-//     const ordenarZA = filmesOrdenadosZA(filmes)
-//     mostrarFilmes(ordenarZA)
-//   }
-// }
-
-// seletorOrdenacaoPersonagens.addEventListener("change", selecionarOrdemPersonagens);
-
-//oi
