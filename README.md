@@ -1,7 +1,5 @@
 # Data Lovers
 
-Para acessar a página web clique aqui
-
 
 ## Índice
 
@@ -25,6 +23,8 @@ pelo studio, e ordená-los de A a Z ou Z a A. É possível filtrá-los por diret
 e ver qual o percentual de filmes foram produzidos pelo mesmo. Também poderá filtrar
 os personagens por filmes e saber quantos personagens aquele filme tem e alguns dados
 sobre eles.
+
+- ***Para acessar a página web [clique aqui](https://daphnevilhar.github.io/SAP009-data-lovers/src/index.html).***
 
 Foi desenvolvido em HTML, CSS e JavaScript.
 
@@ -52,18 +52,24 @@ Com o filtro de diretor aparecerá os filmes dirigidos pelo mesmo e a porcentage
 Sabendo que os usuários hoje acessam mais as páginas pelo smartphone, foi desenvolvida de forma responsiva adaptando-se a todos os tamanhos de tela.
 
 
-![tela_inicio_mobile](https://user-images.githubusercontent.com/122536567/226697344-c1cdc153-2420-4a24-ae9b-9796aa0fd7ee.png)
-
-&nbsp;
-
-![tela_cards_mobile](https://user-images.githubusercontent.com/122536567/226696288-70ba0579-0013-404d-8ef4-b5c8959d0975.png)
+![tela_inicio_mobile](https://user-images.githubusercontent.com/122536567/226697344-c1cdc153-2420-4a24-ae9b-9796aa0fd7ee.png)![tela_cards_mobile](https://user-images.githubusercontent.com/122536567/226696288-70ba0579-0013-404d-8ef4-b5c8959d0975.png)
 
 &nbsp;
 
 ### 4. Organização de trabalho
 
-Antes do desenvolvimento foram feitas as histórias de usuário e os protótipos pelo figma. Separamos as pequenas partes do projeto e nos organizamos
-pelo trello.
+Antes do desenvolvimento foram feitas histórias de usuário, como por exemplo:
+
+- Eu como pessoa que assisti aventuras de shiriro quero saber quais são os outros filmes para que eu possa assistir.
+
+- Eu como fã de cinema quero saber quem são os diretores e produtores pra saber mais sobre suas obras.
+
+- Eu como namorado de uma fã de studio ghibli quero saber quais são os personagens do filme favorito dela pra comprar um presente.
+
+- Eu que conheci o studio agora quero saber quantos filmes foram feitos para matar minha curiosidade.
+
+Também foram feitos protótipos pelo figma. Para organização durante as sprints dividimos o projeto em pequenas tarefas
+utilizando o trello como plataforma.
 
 ### 5. Testes unitários
 
