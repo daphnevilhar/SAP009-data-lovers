@@ -15,7 +15,7 @@
 
 ## 1. Resumo do projeto
 
-Neste projeto construímos uma página web pensando nas necessidades do nosso úsuario
+Neste projeto construímos uma página web pensando nas necessidades do nosso usuário
 de acessar alguns dados sobre o Studio Ghibli.
 
 Em nossa página ele poderá visualizar dados, ou seja, os filmes que foram feitos 
